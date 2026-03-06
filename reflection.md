@@ -1,43 +1,7 @@
-# 💭 Reflection: Game Glitch Investigator
 
-Answer each question in 3 to 5 sentences. Be specific and honest about what actually happened while you worked. This is about your process, not trying to sound perfect.
-
-## 1. What was broken when you started?
-
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the secret number kept changing" or "the hints were backwards").
-
----
-
-## 2. How did you use AI as a teammate?
-
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
-
----
-
-## 3. Debugging and testing your fixes
-
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
-
----
-
-## 4. What did you learn about Streamlit and state?
-
-- In your own words, explain why the secret number kept changing in the original app.
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-- What change did you make that finally gave the game a stable secret number?
-
----
-
-## 5. Looking ahead: your developer habits
-
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+    - I was unable to run the game locally due to the constraints of this environment (no pip install or streamlit run). However, I analyzed the code in the repository.
+    - List at least three concrete bugs you noticed at the start
+      1.  **Type Mismatch for Secret Number:** In `app.py`, the `secret` number's type is changed to `str` on even attempts and `int` on odd attempts right before being compared with `guess_int` (which is always an `int`) within the `check_guess` function. This causes incorrect comparisons on even-numbered attempts.
+      2.  **Ineffective `check_guess` Error Handling:** The `check_guess` function in `app.py` has a `try-except TypeError` block that converts `guess` to a string if a `TypeError` occurs. However, it then re-attempts comparisons like `guess == secret` without ensuring `secret` is also a string or handling the mixed-type comparison properly within the `except` block, making the error handling ineffective.
+      3.  **Raw Input in History:** In `app.py`, the `raw_guess` (the string input from the user) is appended to `st.session_state.history` even after it's successfully parsed into `guess_int`. It would be more consistent to store the parsed integer or a more structured log.
+    
