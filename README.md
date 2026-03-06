@@ -25,14 +25,21 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+### Game Purpose
+The **Glitchy Guesser** is a Streamlit-based number guessing game designed to challenge players across three difficulty levels (Easy, Normal, and Hard). It tracks player progress through a scoring system and a guess history log.
 
-## 📸 Demo
+### Bugs Identified & Fixed
+- **Reversed Comparison Logic:** The game originally gave "Go HIGHER" hints for high guesses and "Go LOWER" for low guesses. I corrected this in `logic_utils.py` so hints now correctly guide the player.
+- **State Persistence Issues:** The score and history were not resetting when a new game was started. I added state-clearing logic to the `new_game` button in `app.py`.
+- **Input Validation:** Invalid inputs (like strings or decimals) were previously counted as attempts. I integrated `parse_guess` to ensure only valid integers decrement the attempt counter.
+- **Scoring Glitches:** The scoring logic was inconsistent. I updated `update_score` to provide a consistent penalty for wrong guesses and a reward for winning.
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+### 📸 Demo
+All core logic has been verified using a comprehensive test suite.
+- **Pytest Results:** 32/32 tests passed successfully.
+- **Core Files:** Logic is fully decoupled into `logic_utils.py`, making the app modular and maintainable.
+-![alt text](image-1.png)
 
 ## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+![alt text](image.png)
