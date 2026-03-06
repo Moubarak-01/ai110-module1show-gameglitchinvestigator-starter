@@ -38,7 +38,7 @@ The **Glitchy Guesser** is a Streamlit-based number guessing game designed to ch
 All core logic has been verified using a comprehensive test suite.
 - **Pytest Results:** 32/32 tests passed successfully.
 - **Core Files:** Logic is fully decoupled into `logic_utils.py`, making the app modular and maintainable.
--![alt text](image-1.png)
+- ![alt text](image-1.png)
 
 ## 🚀 Stretch Features
 
